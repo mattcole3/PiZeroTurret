@@ -88,6 +88,9 @@ def yawFiveRight():
 def yawSixLeft():
     yawLeft(50)
 
+def pitchMax():
+    servoPitch.value = pitchMax
+
 
 def setup():
     print("Setting up command list")
@@ -99,6 +102,7 @@ def setup():
     cmdTable.addCommand(0xB0, "#", homeServos)
     cmdTable.addCommand(0x02, "5", yawFiveRight)
     cmdTable.addCommand(0xC2, "6", yawSixLeft)
+    cmdTable.addCommand(0x98, "0", pitchMax)
 
 
     print("Registered ", cmdTable.count(), " Commands")
