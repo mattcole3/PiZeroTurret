@@ -91,14 +91,14 @@ def yawSixLeft():
 
 def setup():
     print("Setting up command list")
-    cmdTable.addCommand(0x18, "UP", pitchUp())
-    cmdTable.addCommand(0x10, "LEFT", yawLeft())
-    cmdTable.addCommand(0x5A, "RIGHT", yawRight())
-    cmdTable.addCommand(0x4A, "DOWN", pitchDown())
-    cmdTable.addCommand(0x38, "OK", fire())
-    cmdTable.addCommand(0xB0, "#", homeServos())
-    cmdTable.addCommand(0x02, "5", yawFiveRight())
-    cmdTable.addCommand(0xC2, "6", yawSixLeft())
+    cmdTable.addCommand(0x18, "UP", pitchUp)
+    cmdTable.addCommand(0x10, "LEFT", yawLeft)
+    cmdTable.addCommand(0x5A, "RIGHT", yawRight)
+    cmdTable.addCommand(0x4A, "DOWN", pitchDown)
+    cmdTable.addCommand(0x38, "OK", fire)
+    cmdTable.addCommand(0xB0, "#", homeServos)
+    cmdTable.addCommand(0x02, "5", yawFiveRight)
+    cmdTable.addCommand(0xC2, "6", yawSixLeft)
 
 
     print("Registered ", cmdTable.count(), " Commands")

@@ -58,6 +58,10 @@ class IRCommands(object):
         """
         return "\n".join([" ".join([key, self.CmdDict[key][0], self.CmdDict[key][1].__name__]) for key in self.CmdDict.keys()])
 
+'''
+Exmples code below
+'''
+
 def function1():
     """
     Function that represents command1.
