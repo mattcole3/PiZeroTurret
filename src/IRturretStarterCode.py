@@ -11,6 +11,8 @@ decoder = adafruit_irremote.GenericDecode()
 servoRoll = Servo(17)
 servoPitch = Servo(18)
 servoYaw = Servo(13)
+pitchMin = 10
+pitchMax = 175
 
 cmdTable = IRCommands()
 
@@ -52,6 +54,40 @@ def homeServos():
     servoPitch.mid()
     servoYaw.mid()
 
+def pitchUp(pitchVal=0.1):
+    print("Pitching Up")
+    if servoPitch.value + pitchVal <= pitchMax:
+        servoPitch.value += pitchVal
+    else:
+        servoPitch.value = pitchMax
+        print("Pitch at maximum")
+
+def pitchDown(pitchVal=0.1):
+    print("Pitching Down")
+    if servoPitch.value - pitchVal >= pitchMin:
+        servoPitch.value -= pitchVal
+    else:
+        servoPitch.value = pitchMin
+        print("Pitch at minimum")
+
+def yawLeft(yawVal=1):
+    print("Yawing Left")
+    servoYaw.value = servoYaw.min()
+    sleep(0.06*yawVal)
+    servoYaw.value = servoYaw.mid()
+
+def yawRight(yawVal=1):
+    print("Yawing Right")
+    servoYaw.value = servoYaw.max()
+    sleep(0.06*yawVal)
+    servoYaw.value = servoYaw.mid()
+
+def yawFiveRight():
+    yawRight(5)
+
+def yawSixLeft():
+    yawLeft(5)
+
 
 def setup():
     print("Setting up command list")
@@ -61,14 +97,15 @@ def setup():
     cmdTable.addCommand(0x4A, "DOWN", pitchDown())
     cmdTable.addCommand(0x38, "OK", fire())
     cmdTable.addCommand(0xB0, "#", homeServos())
+    cmdTable.addCommand(0x02, "5", yawFiveRight())
+    cmdTable.addCommand(0xC2, "6", yawSixLeft())
+
 
     print("Registered ", cmdTable.count(), " Commands")
     print(cmdTable)
     
     print("Setting up IR Turret")
-    servoRoll.mid()
-    servoPitch.mid()
-    servoYaw.mid()
+    homeServos()
     print("Setup Complete")
 
 def loop():
