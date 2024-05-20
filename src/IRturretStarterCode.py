@@ -3,7 +3,7 @@ from time import sleep
 import pulseio
 import board
 import adafruit_irremote
-from IRcommands import IRCommands
+from IRCommands import IRCommands
 
 pulsein = pulseio.PulseIn(board.D27, maxlen=120, idle_state=True)
 decoder = adafruit_irremote.GenericDecode()
