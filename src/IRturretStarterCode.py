@@ -75,32 +75,8 @@ def loop():
         try:
             code = decoder.decode_bits(pulses)
             print("Code: ", hex(code))
-
-
-
-
-            '''
-            if code == codes['UP']:
-                print("UP")
-                servoPitch.min()
-            elif code == codes['LEFT']:
-                print("LEFT")
-                servoYaw.min()
-            elif code == codes['RIGHT']:
-                print("RIGHT")
-                servoYaw.max()
-            elif code == codes['DOWN']:
-                print("DOWN")
-                servoPitch.max()
-            elif code == codes['OK']:
-                print("OK")
-                fire()
-                sleep(0.2)
-            else:
-                print("Invalid Code")
-                print("UP")
-                servoPitch.min()
-            '''
+            cmdTable.execCommand(code)
+            
         except adafruit_irremote.IRNECRepeatException:
             print("Repeat Code")
         except adafruit_irremote.IRDecodeException as e:

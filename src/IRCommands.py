@@ -12,7 +12,7 @@ class IRCommands(object):
         """
         self.CmdDict = {}
 
-    def addCommand(self, command, function):
+    def addCommand(self, command, name, function):
         """
         Adds a command and its corresponding function to the CmdDict.
 
@@ -20,7 +20,7 @@ class IRCommands(object):
             command (str): The command to be added.
             function (function): The function to be associated with the command.
         """
-        self.CmdDict[command] = function
+        self.CmdDict[command] = [name, function]
 
     def execCommand(self, command):
         """
@@ -33,7 +33,66 @@ class IRCommands(object):
             KeyError: If the command is not found in the CmdDict.
         """
         if command in self.CmdDict:
-            function = self.CmdDict[command]
+            print("Executing " + self.CmdDict[command][0])
+            function = self.CmdDict[command][1]
             function()
         else:
             raise KeyError("Command not found.")
+
+def function1():
+    """
+    Function that represents command1.
+
+    Example:
+        function1()
+    """
+    print("Executing function1")
+
+def function2():
+    """
+    Function that represents command2.
+
+    Example:
+        function2()
+    """
+    print("Executing function2")
+
+def function3():
+    """
+    Function that represents command3.
+
+    Example:
+        function3()
+    """
+    print("Executing function3")
+
+def main():
+    """
+    The main function of the program.
+
+    Creates an instance of IRCommands, adds commands and their corresponding functions,
+    and executes a command.
+
+    Example:
+        ir_commands = IRCommands()
+        ir_commands.addCommand("command1", "name1", function1)
+        ir_commands.addCommand("command2", "name2", function2)
+        ir_commands.addCommand("command3", "name3", function3)
+        ir_commands.execCommand("command1")
+    """
+    # Create an instance of IRCommands
+    ir_commands = IRCommands()
+
+    # Add commands and their corresponding functions
+    ir_commands.addCommand("command1", "name1", function1)
+    ir_commands.addCommand("command2", "name2", function2)
+    ir_commands.addCommand("command3", "name3", function3)
+
+    # Execute a command
+    try:
+        ir_commands.execCommand("command1")
+    except KeyError as e:
+        print(str(e))
+
+if __name__ == "__main__":
+    main()
