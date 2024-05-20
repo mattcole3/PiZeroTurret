@@ -83,10 +83,10 @@ def yawRight(yawVal=1):
     servoYaw.value = servoYaw.mid()
 
 def yawFiveRight():
-    yawRight(5)
+    yawRight(50)
 
 def yawSixLeft():
-    yawLeft(5)
+    yawLeft(50)
 
 
 def setup():
