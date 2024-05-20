@@ -47,7 +47,7 @@ def fire():
     sleep(0.5)
     servoRoll.mid()
 
-void homeServos():
+def homeServos():
     servoRoll.mid()
     servoPitch.mid()
     servoYaw.mid()
@@ -61,6 +61,9 @@ def setup():
     cmdTable.addCommand(0x4A, "DOWN", pitchDown())
     cmdTable.addCommand(0x38, "OK", fire())
     cmdTable.addCommand(0xB0, "#", homeServos())
+
+    print("Registered ", cmdTable.count(), " Commands")
+    print(cmdTable)
     
     print("Setting up IR Turret")
     servoRoll.mid()

@@ -18,6 +18,7 @@ class IRCommands(object):
 
         Args:
             command (str): The command to be added.
+            name (str): The name of the command.
             function (function): The function to be associated with the command.
         """
         self.CmdDict[command] = [name, function]
@@ -38,6 +39,24 @@ class IRCommands(object):
             function()
         else:
             raise KeyError("Command not found.")
+        
+    def count(self):
+        """
+        Returns the number of commands in the CmdDict.
+
+        Returns:
+            int: The number of commands in the CmdDict.
+        """
+        return len(self.CmdDict)
+    
+    def __str__(self):
+        """
+        Returns a string representation of the IRCommands object.
+
+        Returns:
+            str: A string representation of the IRCommands object.
+        """
+        return "\n".join([" ".join([key, self.CmdDict[key][0], self.CmdDict[key][1].__name__]) for key in self.CmdDict.keys()])
 
 def function1():
     """
