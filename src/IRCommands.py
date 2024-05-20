@@ -56,7 +56,7 @@ class IRCommands(object):
         Returns:
             str: A string representation of the IRCommands object.
         """
-        return "\n".join([" ".join([key, self.CmdDict[key][0], self.CmdDict[key][1].__name__]) for key in self.CmdDict.keys()])
+        return "\n".join([" ".join([str(hex(key)), self.CmdDict[key][0], self.CmdDict[key][1].__name__]) for key in self.CmdDict.keys()])
 
 '''
 Exmples code below
