@@ -89,7 +89,7 @@ def yawSixLeft():
     yawLeft(50)
 
 def pitchMax():
-    servoPitch.value = pitchMax
+    servoPitch.value = servoPitch.max()
 
 
 def setup():
