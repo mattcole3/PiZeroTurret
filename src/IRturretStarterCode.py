@@ -114,7 +114,7 @@ def loop():
         pulses = decoder.read_pulses(pulsein)
         try:
             code = decoder.decode_bits(pulses)
-            print("Code: ", hex(code))
+            print("Code: ", code)
             cmdTable.execCommand(code)
             
         except adafruit_irremote.IRNECRepeatException:
