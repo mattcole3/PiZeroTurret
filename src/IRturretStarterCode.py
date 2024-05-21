@@ -14,10 +14,10 @@ servoYaw = Servo(13)
 pitchMin = 10
 pitchMax = 160
 
-def deg_to_servo(deg, min=0, max=180):
+def deg_to_servo(deg, mind=0, maxd=180):
     servoVal = 0
     servoRange = 180
-    deg = max(min(max, deg), min)
+    deg = max(min(maxd, deg), mind)
     valRange=2
     servoVal = (deg/servoRange)*valRange-1
 
