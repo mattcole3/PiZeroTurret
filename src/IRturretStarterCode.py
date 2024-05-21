@@ -70,13 +70,19 @@ def homeServos():
 
 def pitchUp(pitchDeg=10):
     print("Pitching Up")
-    tempVal = servo_to_deg(servoPitch.value)
-    servoPitch.value = deg_to_servo(tempVal + pitchDeg, pitchMin, pitchMax)
+    tempVal = servo_to_deg(servoPitch.value)    
+    print("TempVal: ", tempVal)
+    serVal = deg_to_servo(tempVal - pitchDeg, pitchMin, pitchMax)
+    print("ServoVal: ", serVal)
+    servoPitch.value = serVal
 
 def pitchDown(pitchDeg=10):
     print("Pitching Down")
     tempVal = servo_to_deg(servoPitch.value)
-    servoPitch.value = deg_to_servo(tempVal - pitchDeg, pitchMin, pitchMax)
+    print("TempVal: ", tempVal)
+    serVal = deg_to_servo(tempVal + pitchDeg, pitchMin, pitchMax)
+    print("ServoVal: ", serVal)
+    servoPitch.value = serVal
 
 def yawLeft(yawVal=5):
     print("Yawing Left")
