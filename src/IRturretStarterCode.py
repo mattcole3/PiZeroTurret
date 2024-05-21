@@ -88,10 +88,6 @@ def yawFiveRight():
 def yawSixLeft():
     yawLeft(75)
 
-def pitchMax():
-    servoPitch.value = servoPitch.max()
-
-
 def setup():
     print("Setting up command list")
     cmdTable.addCommand(0x18, "UP", pitchUp)
