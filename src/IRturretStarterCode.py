@@ -51,7 +51,7 @@ codes = {
 def fire():
     print("Firing")
     servoRoll.value=-1
-    sleep(0.5)
+    sleep(0.65)
     servoRoll.value=0
 
 def homeServos():
