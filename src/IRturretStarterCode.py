@@ -19,7 +19,7 @@ def deg_to_servo(deg, mind=0, maxd=180):
     servoRange = 180
     deg = max(min(maxd, deg), mind)
     valRange=2
-    servoVal = (deg/servoRange)*valRange-1
+    return deg/servoRange * valRange-1
 
 cmdTable = IRCommands()
 
