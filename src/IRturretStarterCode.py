@@ -14,11 +14,19 @@ servoYaw = Servo(13)
 pitchMin = 10
 pitchMax = 160
 
+'''
+Does conversion into servo scale, but include sw defined clipping. Not included in the reverse conversion.
+'''
 def deg_to_servo(deg, mind=0, maxd=180):
     servoRange = 180
-    deg = max(min(maxd, deg), mind)
     valRange=2
+    deg = max(min(maxd, deg), mind)
     return deg/servoRange * valRange - 1
+
+def servo_to_deg(val):
+    servoRange = 180
+    valRange=2
+    return (val + 1) * servoRange/valRange
 
 cmdTable = IRCommands()
 
@@ -62,11 +70,13 @@ def homeServos():
 
 def pitchUp(pitchDeg=10):
     print("Pitching Up")
-    servoPitch.value = deg_to_servo(pitchDeg, pitchMin, pitchMax)
+    tempVal = servo_to_deg(servoPitch.value)
+    servoPitch.value = deg_to_servo(tempVal + pitchDeg, pitchMin, pitchMax)
 
 def pitchDown(pitchDeg=10):
     print("Pitching Down")
-    servoPitch.value = deg_to_servo(pitchDeg, pitchMin, pitchMax)
+    tempVal = servo_to_deg(servoPitch.value)
+    servoPitch.value = deg_to_servo(tempVal - pitchDeg, pitchMin, pitchMax)
 
 def yawLeft(yawVal=5):
     print("Yawing Left")
