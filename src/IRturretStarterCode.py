@@ -18,6 +18,9 @@ servoYaw = Servo(13)
 
 cmdTable = IRCommands()
 
+def minmax(val, minval, maxval):
+    return min(max(val, minval), maxval)
+
 '''
 # This is the code for the IR turret
 '''
@@ -58,10 +61,12 @@ def homeServos():
 
 def pitchUp(pitchDeg=10):
     print("Pitching Up")
+    serVal = minmax(servoPitch.angle+pitchDeg, pitchMin, pitchMax)
     servoPitch.angle += pitchDeg
 
 def pitchDown(pitchDeg=10):
     print("Pitching Down")
+    serVal = minmax(servoPitch.angle-pitchDeg, pitchMin, pitchMax)
     servoPitch.angle -= pitchDeg
 
 def yawLeft(yawVal=5):
