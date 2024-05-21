@@ -50,9 +50,9 @@ codes = {
 
 def fire():
     print("Firing")
-    servoRoll.min()
+    servoRoll.value=-1
     sleep(0.5)
-    servoRoll.mid()
+    servoRoll.value=0
 
 def homeServos():
     servoRoll.mid()
