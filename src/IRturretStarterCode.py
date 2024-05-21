@@ -62,12 +62,12 @@ def homeServos():
 def pitchUp(pitchDeg=10):
     print("Pitching Up")
     serVal = minmax(servoPitch.angle+pitchDeg, pitchMin, pitchMax)
-    servoPitch.angle += pitchDeg
+    servoPitch.angle = serVal
 
 def pitchDown(pitchDeg=10):
     print("Pitching Down")
     serVal = minmax(servoPitch.angle-pitchDeg, pitchMin, pitchMax)
-    servoPitch.angle -= pitchDeg
+    servoPitch.angle = serVal
 
 def yawLeft(yawVal=5):
     print("Yawing Left")
