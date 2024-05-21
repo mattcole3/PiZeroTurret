@@ -15,11 +15,10 @@ pitchMin = 10
 pitchMax = 160
 
 def deg_to_servo(deg, mind=0, maxd=180):
-    servoVal = 0
     servoRange = 180
     deg = max(min(maxd, deg), mind)
     valRange=2
-    return deg/servoRange * valRange-1
+    return deg/servoRange * valRange - 1
 
 cmdTable = IRCommands()
 
@@ -63,11 +62,11 @@ def homeServos():
 
 def pitchUp(pitchDeg=10):
     print("Pitching Up")
-    servoPitch.value += deg_to_servo(pitchDeg)
+    servoPitch.value = deg_to_servo(pitchDeg, pitchMin, pitchMax)
 
 def pitchDown(pitchDeg=10):
     print("Pitching Down")
-    servoPitch.value -= deg_to_servo(pitchDeg)
+    servoPitch.value = deg_to_servo(pitchDeg, pitchMin, pitchMax)
 
 def yawLeft(yawVal=5):
     print("Yawing Left")
