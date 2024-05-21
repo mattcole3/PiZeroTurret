@@ -1,5 +1,6 @@
 # PiZeroTurret
-A Raspberry Pi (Zero 2W) port of the HackPack Arduino Nano-based IT Turret project.
+A Raspberry Pi (Zero 2W) port of the HackPack Arduino Nano-based IT Turret project. For more:
+https://www.crunchlabs.com/products/ir-turret
 
 ## Pinout
 Here is the pinout diagram for the Raspberry Pi Zero 2W:
