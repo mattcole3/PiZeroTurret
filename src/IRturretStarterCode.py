@@ -1,4 +1,5 @@
 from gpiozero import Servo
+from gpiozero import AngularServo
 from time import sleep
 import pulseio
 import board
@@ -8,25 +9,12 @@ from IRCommands import IRCommands
 pulsein = pulseio.PulseIn(board.D27, maxlen=120, idle_state=True)
 decoder = adafruit_irremote.GenericDecode()
 
+pitchMin = -45
+pitchMax = 45
+
 servoRoll = Servo(17)
-servoPitch = Servo(18)
+servoPitch = AngularServo(18, min_angle=pitchMin, max_angle=pitchMax, initial_angle=5)
 servoYaw = Servo(13)
-pitchMin = 10
-pitchMax = 160
-
-'''
-Does conversion into servo scale, but include sw defined clipping. Not included in the reverse conversion.
-'''
-def deg_to_servo(deg, mind=0, maxd=180):
-    servoRange = 180
-    valRange=2
-    deg = max(min(maxd, deg), mind)
-    return deg/servoRange * valRange - 1
-
-def servo_to_deg(val):
-    servoRange = 180
-    valRange=2
-    return (val + 1) * servoRange/valRange
 
 cmdTable = IRCommands()
 
@@ -70,19 +58,11 @@ def homeServos():
 
 def pitchUp(pitchDeg=10):
     print("Pitching Up")
-    tempVal = servo_to_deg(servoPitch.value)    
-    print("TempVal: ", tempVal)
-    serVal = deg_to_servo(tempVal - pitchDeg, pitchMin, pitchMax)
-    print("ServoVal: ", serVal)
-    servoPitch.value = serVal
+    servoPitch.value += pitchDeg
 
 def pitchDown(pitchDeg=10):
     print("Pitching Down")
-    tempVal = servo_to_deg(servoPitch.value)
-    print("TempVal: ", tempVal)
-    serVal = deg_to_servo(tempVal + pitchDeg, pitchMin, pitchMax)
-    print("ServoVal: ", serVal)
-    servoPitch.value = serVal
+    servoPitch.value -= pitchDeg
 
 def yawLeft(yawVal=5):
     print("Yawing Left")
