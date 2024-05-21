@@ -63,7 +63,7 @@ def homeServos():
 
 def pitchUp(pitchDeg=10):
     print("Pitching Up")
-    servoPitch.value += deg_to_servo(pitchVal)
+    servoPitch.value += deg_to_servo(pitchDeg)
 
 def pitchDown(pitchDeg=10):
     print("Pitching Down")
