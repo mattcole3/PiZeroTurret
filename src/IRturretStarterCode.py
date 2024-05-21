@@ -12,7 +12,14 @@ servoRoll = Servo(17)
 servoPitch = Servo(18)
 servoYaw = Servo(13)
 pitchMin = 10
-pitchMax = 175
+pitchMax = 160
+
+def deg_to_servo(deg, min=0, max=180):
+    servoVal = 0
+    servoRange = 180
+    deg = max(min(max, deg), min)
+    valRange=2
+    servoVal = (deg/servoRange)*valRange-1
 
 cmdTable = IRCommands()
 
