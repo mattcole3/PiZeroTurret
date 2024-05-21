@@ -72,13 +72,13 @@ def pitchDown(pitchVal=0.1):
 
 def yawLeft(yawVal=1):
     print("Yawing Left")
-    servoYaw.min()
+    servoYaw.value = -1
     #sleep(0.06*yawVal)
     #servoYaw.mid()
 
 def yawRight(yawVal=1):
     print("Yawing Right")
-    servoYaw.max()
+    servoYaw.value = 1
     #sleep(0.06*yawVal)
     #servoYaw.mid()
 
