@@ -61,21 +61,13 @@ def homeServos():
     servoPitch.mid()
     servoYaw.mid()
 
-def pitchUp(pitchVal=0.1):
+def pitchUp(pitchDeg=10):
     print("Pitching Up")
-    if servoPitch.value + pitchVal <= pitchMax:
-        servoPitch.value += pitchVal
-    else:
-        servoPitch.value = pitchMax
-        print("Pitch at maximum")
+    servoPitch.value += deg_to_servo(pitchVal)
 
-def pitchDown(pitchVal=0.1):
+def pitchDown(pitchDeg=10):
     print("Pitching Down")
-    if servoPitch.value - pitchVal >= pitchMin:
-        servoPitch.value -= pitchVal
-    else:
-        servoPitch.value = pitchMin
-        print("Pitch at minimum")
+    servoPitch.value -= deg_to_servo(pitchDeg)
 
 def yawLeft(yawVal=5):
     print("Yawing Left")
