@@ -5,7 +5,7 @@ https://www.crunchlabs.com/products/ir-turret
 ## Pinout
 Here is the pinout diagram for the Raspberry Pi Zero 2W:
 
-![Raspberry Pi Zero 2W Pinout](./doc/GPIO-Pinout-Diagram-2.png))
+![Raspberry Pi Zero 2W Pinout](./doc/GPIO-Pinout-Diagram-2.png)
 
 More information available 
 [here](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html)
