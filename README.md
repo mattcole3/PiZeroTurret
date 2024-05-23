@@ -7,10 +7,10 @@ Here is the pinout diagram for the Raspberry Pi Zero 2W:
 
 ![Raspberry Pi Zero 2W Pinout](./doc/GPIO-Pinout-Diagram-2.png)
 
-More information available 
-[here](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html)
+More information available at [raspberrypi.com](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html) and [pinout.xyz](https://pinout.xyz/)
 
-Four pins are required for this project. 3 PWM outputs are required for controlling the Pitch, Yaw and Roll(cannon fire mechanism) degrees of freedom. One GPIO configured as an input is required for the IR interface for decoding remote control input.
+
+Four pins are required for this project. 3 PWM outputs are required for controlling the Pitch (up/down), Yaw (swing side to side) and Roll (cannon fire mechanism) degrees of freedom. One GPIO configured as an input is required for the IR interface for decoding remote control input. To learn about pinconfig on Raspberry Pi you can look [here](https://www.raspberrypi.com/documentation/computers/config_txt.html#gpio-control).
 
 The following table shows the connections required, the GPIO pin label for software, and the use in this code.
 
@@ -27,5 +27,11 @@ The module `gpiozero`, `pulseio`, `board`, and `adafruit_irremote` are required 
 
 ## IRCommands Class
 
-A class that creates a function table. You add a list of commands using the `addCommand` method, defining the code, in this case the IR command code, a function name, and a reference to the function. To use, simply pass the code into the class with the 
+A class that creates a function table and a decoder method. Main benefit is that dictionary lookups are marginally faster than an extensive if/else ladder, and it's much cleaner runtime code.
+To use, add a list of commands using the `addCommand` method, defining the code, in this case the IR command code index 2, a function name, and a reference to the function. To use, simply pass the code into the class with the function you want to map to that code. At runtime, call the `execCommand` method on your IR code.
+
+Quick note on NEC encoding. The 3rd byte (index 2 if you're new) is the byte you care about. Byte 4 should be the bitwise-inverse of byte 3, but tbh I haven't checked.  
+
+
+Still a WIP.  
 
